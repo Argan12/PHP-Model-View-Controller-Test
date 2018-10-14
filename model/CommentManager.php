@@ -17,12 +17,4 @@
 			
 			return $comments;
 		}
-		
-		public function countComments($postID) {
-			$database = $this->dbConnect();
-			$count = $database->prepare('SELECT COUNT(*) AS nb_comments FROM mvctestcomments WHERE post_id = ?');
-			$count->execute(array($postID));
-			
-			return $count;
-		}
 	}	
