@@ -6,7 +6,7 @@ It's a sort of social network : you have to create an account and this social ne
 
 I've made this Website for learning MVC architecture.
 
-## Langages used :
+## Languages used :
 * HTML 5, CSS3
 * JavaScript
 * PHP, MySQL
