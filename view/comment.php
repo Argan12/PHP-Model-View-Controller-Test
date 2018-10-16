@@ -11,7 +11,7 @@
 <!-- Display comments page -->
 <!DOCTYPE HTML>
 
-<html>
+<html lang="fr">
 	<head>
 		<meta charset="utf-8"/>
 		<link rel="stylesheet" href="public/css/style.css"/>
