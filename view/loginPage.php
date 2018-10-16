@@ -1,6 +1,16 @@
+<?php
+	// If user is not log in, this page's access is blocked
+	// Redirection to index.php
+	if ($_SESSION['id'] == NULL)
+	{
+		session_destroy();
+		header('Location:index.php');
+	}
+?>
+
 <!DOCTYPE HTML>
 
-<html>
+<html lang="fr">
 
 <head>
 	<meta charset="utf-8"/>
@@ -11,6 +21,7 @@
 <body>
 	<h2>Bienvenue sur mon site Web !</h2>
 	
+	<!-- Log in via form below -->
 	<div id="login">
 		<h3>S'authentifier</h3>
 		
@@ -20,7 +31,8 @@
 			<input type="submit" id="login_submit" value="Valider"/>
 		</form>
 	</div>
-		
+	
+	<!-- Create an account -->
 	<div class="container">	
 		<div class="title">
 			<p>S'inscrire</p>
@@ -42,6 +54,8 @@
 		</div>
 	</div>
 	
+	<!-- JavaScript script which display an alert if user has not filled all inputs -->
+	<!-- Send a message if password doesn't contains specials characters -->
 	<script type="text/javascript">
 		function verifyInputs() {
 			var fname = document.registerForm.firstname.value;
