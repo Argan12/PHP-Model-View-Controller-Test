@@ -94,6 +94,7 @@
 					throw new Exception('Page introuvable');
 			}
 		} else {
+			// First Website page
 			require('view/loginPage.php');
 		}
 	} catch (Exception $e) {
