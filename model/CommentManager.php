@@ -2,6 +2,7 @@
 	require_once('model/Database.php');
 	
 	class CommentManager extends Database {
+		// Save new comments in database
 		public function postComment($postID, $authorID, $authorFirstname, $authorLastname, $comment) {
 			$database = $this->dbConnect();
 			$post_comment = $database->prepare('INSERT INTO mvctestcomments(post_id, author_id, author_firstname, author_lastname, comment, date) VALUES(?, ?, ?, ?, ?, NOW())');
@@ -9,7 +10,8 @@
 			
 			return $published_comment;
 		}
-			
+		
+		// Retrieve comments in database
 		public function getComments($postID) {
 			$database = $this->dbConnect();
 			$comments = $database->prepare('SELECT id, post_id, author_firstname, author_lastname, comment, DATE_FORMAT(date, \'%d/%m/%Y à %H:%i\') AS fr_date FROM mvctestcomments WHERE post_id = ? ORDER BY id DESC');
@@ -18,6 +20,8 @@
 			return $comments;
 		}
 		
+		// Count comments
+		// Visible on 'newComment.php' page
 		public function countComments($postID) {
 			$database = $this->dbConnect();
 			$count = $database->prepare('SELECT COUNT(*) AS nb_comments FROM mvctestcomments WHERE post_id = ?');
