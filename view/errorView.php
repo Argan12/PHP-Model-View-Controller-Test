@@ -1,3 +1,5 @@
+<!-- This page appears if there is an error in URL -->
+
 <!DOCTYPE HTML>
 
 <html>
