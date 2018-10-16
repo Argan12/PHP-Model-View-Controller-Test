@@ -1,4 +1,6 @@
 <?php
+	// If user is not log in, this page's access is blocked
+	// Redirection to index.php
 	if ($_SESSION['id'] == NULL)
 	{
 		session_destroy();
@@ -6,9 +8,10 @@
 	}
 ?>
 
+<!-- Modify a post -->
 <!DOCTYPE HTML>
 
-<html>
+<html lang="fr">
 
 <head>
 	<meta charset="utf-8"/>
@@ -21,6 +24,7 @@
 	
 	<p><a href="index.php?action=listPosts" class="back">Retour à la page principale</a></p>
 	
+	<!-- Display post to modify -->
 	<div class="container">
 		<div class="title">
 			<p><?= $post['title'];?></p>
@@ -37,7 +41,8 @@
 			<a href="index.php?action=deletePost&id=<?= $post['post_id']; ?>" class="comment">Supprimer</a>
 		</div>
 	</div>
-		
+	
+	<!-- Enter the new post content via form below -->
 	<div class="container">
 		<div class="title">
 			<p>Modifier un article</p>
