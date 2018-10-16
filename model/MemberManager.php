@@ -2,6 +2,7 @@
 	require_once('model/Database.php');
 	
 	class MemberManager extends Database {
+		// Save new member infos in database
 		public function newMember($firstname, $lastname, $mail_address, $password) {
 			$database = $this->dbConnect();
 			$psswd_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -11,7 +12,8 @@
 
 			return $register;
 		}
-	
+		
+		// Log in function
 		public function accessAllowed($mail_address, $password) {
 			$database = $this->dbConnect();
 			$log = $database->prepare('SELECT member_id, firstname, lastname, mail_address, password FROM newmembers WHERE mail_address=?');
