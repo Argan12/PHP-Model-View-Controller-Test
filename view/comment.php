@@ -1,4 +1,6 @@
 <?php
+	// If user is not log in, this page's access is blocked
+	// Redirection to index.php
 	if ($_SESSION['id'] == NULL)
 	{
 		session_destroy();
@@ -6,6 +8,7 @@
 	}
 ?>
 
+<!-- Display comments page -->
 <!DOCTYPE HTML>
 
 <html>
@@ -16,6 +19,7 @@
 	</head>
 	
 	<body>
+		<!-- Navigation bar -->
 		<div id="navbar_container">
 			<div id="navbar">
 				<p>Bonjour, <?= $_SESSION['firstname'];?></p>
@@ -27,6 +31,7 @@
 		
 		<p><a href="index.php?action=listPosts" class="back">Retour à la page principale</a></p>
 		
+		<!-- Get post by id -->
 		<div class="container">
 			<div class="title">
 				<p><?= $post['title']; ?></p>
@@ -38,6 +43,7 @@
 			</div>
 		</div>
 		
+		<!-- Display comments which correspond to the post -->
 		<?php			
 			while ($comment = $comments->fetch())
 			{
