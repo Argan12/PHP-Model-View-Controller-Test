@@ -1,4 +1,6 @@
 <?php
+	// If user is not log in, this page's access is blocked
+	// Redirection to index.php
 	if ($_SESSION['id'] == NULL)
 	{
 		session_destroy();
@@ -17,6 +19,7 @@
 </head>
 
 <body>
+	<!-- Navigation bar -->
 	<div id="navbar_container">
 		<div id="navbar">
 			<p>Bonjour, <?= $_SESSION['firstname'];?></p>
@@ -31,6 +34,7 @@
 	<p><a href="index.php?action=newPost" class="new">&Eacute;crire un nouveau billet</a></p>
 	
 	<?php
+		// Display every posts saved in database
 		while ($posts = $searchPosts->fetch())
 		{
 			?>
