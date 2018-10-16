@@ -1,4 +1,6 @@
 <?php
+	// If user is not log in, this page's access is blocked
+	// Redirection to index.php
 	if ($_SESSION['id'] == NULL)
 	{
 		session_destroy();
@@ -6,11 +8,10 @@
 	}
 ?>
 
-?>
-
+<!-- Post comment page -->
 <!DOCTYPE HTML>
 
-<html>
+<html lang="fr">
 	<head>
 		<meta charset="utf-8"/>
 		<link rel="stylesheet" href="public/css/style.css"/>
@@ -18,6 +19,7 @@
 	</head>
 	
 	<body>
+		<!-- Navigation bar -->
 		<div id="navbar_container">
 			<div id="navbar">
 				<p>Bonjour, <?= $_SESSION['firstname'];?></p>
@@ -29,6 +31,7 @@
 	
 		<p><a href="index.php?action=listPosts" class="back">Retour à la page principale</a></p>
 		
+		<!-- Display post to comment -->
 		<div class="container">
 			<div class="title">
 				<p><?= $post['title'];?></p>
@@ -54,6 +57,7 @@
 			</div>
 		</div>
 	
+		<!-- Post comment via form below -->
 		<div class="container">
 			<div class="title">
 				<p>Nouveau commentaire</p>
@@ -70,6 +74,7 @@
 		</div>
 	</body>
 	
+	<!-- Display an alert if inputs are empty -->
 	<script type="text/javascript">
 		function getMessage() {
 			var content = document.new_comment.comment.value;
