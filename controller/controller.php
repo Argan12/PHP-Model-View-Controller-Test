@@ -1,8 +1,12 @@
+<!-- Controller contains PHP functions which will be call by router -->
+
 <?php
 	require_once('model/PostManager.php');
 	require_once('model/MemberManager.php');
 	require_once('model/CommentManager.php');
 	
+	// Homepage
+	// Display every posts
 	function listPosts() {
 		$postManager = new PostManager();
 		$commentManager = new CommentManager();
@@ -11,6 +15,7 @@
 		require('view/homepage.php');
 	}
 	
+	// Save post in database
 	function savePost($title, $content) {
 		$postManager = new PostManager();
 		$save = $postManager->postEdit($title, $content);
@@ -28,6 +33,7 @@
 		require('view/update.php');
 	}
 	
+	// Save new post content in database
 	function updatePost($postID, $title, $content) {
 		$postManager = new PostManager();
 		$update = $postManager->postUpdate($postID, $title, $content);
@@ -38,6 +44,7 @@
 			header('Location:index.php?action=update&id='.$_GET['id']);
 	}
 	
+	// Delete post from database
 	function deletePost($postID) {
 		$postManager = new PostManager();
 		$deletePost = $postManager->postDelete($postID);
@@ -58,6 +65,7 @@
 		require('view/comment.php');
 	}
 	
+	// Page to publish new comments via inputs
 	function newComment() {
 		$postManager = new PostManager();
 		$commentManager = new CommentManager();
@@ -66,7 +74,8 @@
 		
 		require('view/newComment.php');
 	}
-
+	
+	// Save new comments in database
 	function saveComment($postID, $authorID, $authorFirstname, $authorLastname, $comment) {
 		$commentManager = new CommentManager();
 		$published_comment = $commentManager->postComment($postID, $authorID, $authorFirstname, $authorLastname, $comment);
@@ -77,6 +86,7 @@
 			header('Location:index.php?action=comment&id='.$_GET['id']);
 	}
 		
+	// Create an account
 	function registerPage($firstname, $lastname, $mail_address, $password) {
 		$memberManager = new MemberManager();
 		$register = $memberManager->newMember($firstname, $lastname, $mail_address, $password);
@@ -86,7 +96,7 @@
 		else 
 			header('Location:index.php?action=listPosts');
 	}
-	
+
 	function login($mail_address, $password) {
 		$memberManager = new MemberManager();
 		$log = $memberManager->accessAllowed($mail_address, $password);
