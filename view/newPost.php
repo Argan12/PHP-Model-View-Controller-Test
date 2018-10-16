@@ -1,4 +1,6 @@
 <?php
+	// If user is not log in, this page's access is blocked
+	// Redirection to index.php
 	if ($_SESSION['id'] == NULL)
 	{
 		session_destroy();
@@ -6,6 +8,7 @@
 	}
 ?>
 
+<!-- New post page -->
 <!DOCTYPE HTML>
 
 <html>
@@ -21,6 +24,7 @@
 	
 	<p><a href="index.php?action=listPosts" class="back">Retour à la page principale</a></p>
 	
+	<!-- Publish a new post via form below -->
 	<div class="container">
 		<div class="title">
 			<p>Title</p>
@@ -38,6 +42,7 @@
 		</div>
 	</div>
 	
+	<!-- Display an alert if inputs are empty -->
 	<script type="text/javascript">
 		function getMessage() {
 			var title = document.newPost.title.value;
