@@ -1,4 +1,5 @@
 <!-- Connection to database -->
+
 <?php 
 	abstract class Database {
 		protected function dbConnect() {
